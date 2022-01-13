@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html class="no-js" lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <title>figure retoriche - descrizione secondaria</title>
+  <meta name="description" content="Un utile strumento pensato per aiutare con le fasi di memorizzazione dei concetti durante lo studio, diretto verso chi deve preparare una qualunque interrogazione/colloquio orale.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="Figure retoriche - descrizione secondaria">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="#">
+  <meta property="og:image" content="snippet.png">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+  <main class="wrapper">
+    <h1>
+      Figure retoriche carte mnemoniche
+    </h1>
+    <p id="input">
+      [figura retorica]
+    </p> <button>nuova</button>
+    <p id="soluzione" style="background-color:#222; height: 200px;">
+      risposta corretta
+    </p> <button>rivela risposta</button>
+  </main>  
+  <script>
+
+    let figureRetoriche = [
+    ['litote', 'attenuare formalmente l’espressione di un giudizio o di un predicato col negare l’idea contraria, ottenendo per lo più l’effetto di rinforzarla sostanzialmente.'], 
+    ['eufemismo', "attenuazione un concetto, un'affermazione dolorosa o negativa, mediante l'uso di altre parole ed espressioni positive."], 
+    ['proverbio', 'Breve detto popolare che contiene un insegnamento desunto dall’esperienza.'], 
+    ['interrogazione retorica', 'Consiste in una domanda apparente, la cui risposta è implicita. Si afferma qualcosa sotto forma di interrogazione.'],
+    ['preterizione', 'Allude a qualcosa evitandola in modo specifico. Non parliamo di quando hai fatto x…'],
+    ['Catacresi', 'Figura retorica consistente nell’estendere una parola o una locuzione oltre i limiti del suo significato proprio.'],
+    ['Similitudine', 'Figura retorica che mira a chiarire un concetto presentandolo in paragone con un altro.'],
+    ['Allegoria', 'Rappresentare l’astratto con un immagine concreta.'],
+    ['metafora', 'trasposizione di significato per intime somiglianze'],
+    ['Metonimia', 'Sostituzione di un termine con un altro, che ha con il primo una relazione di tipo qualitativo.'],
+    ['sineddoche', 'Sostituzione di un termine con un altro, che ha con il primo una relazione di tipo quantitativo.'],
+    ['prosopopea', 'Consiste nel dar vita e sembianze umane a cose inanimate o astratte. Es: il vento soffia.'],
+    ['antonomasia', 'Sostituzione di un nome proprio con l’attribuito che l’ha reso celebre.'],
+    ['apostrofe', 'spiazzamento e del ribaltamento improvviso del senso del discorso.'],
+    ['chiasmo', 'Consiste nel rovesciare i termini di una frase.'],
+    ['antitesi', 'La negazione della tesi.'],
+    ['ossimoro', 'unione sintattica di due termini contraddittori, in modo tale che si riferiscano a una medesima entità.'],
+    ['iperbole', 'Esagerazione per eccesso o per difetto.'],
+    ['antifrasi', 'esprimersi con termini di significato opposto a ciò che si pensa, o per ironia o per eufemismo. "Ora viene il bello!"'],
+    ['metalessi', 'tipo di metonimia in cui un termine indicante l’effetto è sostituito con uno indicante la causa: mangerai il lavoro delle tue mani.'],
+    ['epanadiplosi', 'iniziare e terminare una frase o un verso con la stessa parola.'],
+    ['palindromo', 'consistente in una parola o frase che, letta in senso inverso, sia da sinistra sia da destra, rimane identica. I topi non avevano nipoti.'],
+    ['Hysteron Proteron', 'Proteron (posteriore anteriore): Figura retorica per cui l’ordine delle parole è inverso rispetto all’ordine naturale delle azioni: «Muoriamo (posteriore) e precipitiamoci nella mischia (anteriore)».'],
+    ['Anafora', 'ripetere, in principio di verso o di proposizione, una o più parole con cui ha inizio il verso o la proposizione precedente. «Per me si va nella città dolente,/ Per me si va nell’eterno dolore, /Per me si va tra la perduta gente»'],
+    ['Allitterazione', 'Ripetizione, esatta o approssimativa, spontanea o ricercata, di lettere o sillabe, di solito iniziali, di due o più vocaboli successivi.'],
+    ['Epanalessi', 'ripetizione di una o più parole in un unico segmento testuale sintattico (prosa) o ritmico (verso), sia di seguito, sia con l’interposizione di altre parole (Ben son, ben son Beatrice; Umano, troppo umano).'],
+    ['Poliptoto', 'ripetizione di una parola già usata a breve distanza, modificandone il caso, il genere, il numero, il modo e il tempo: Cred’io ch’ei credette ch’io credesse (Dante).'],
+    ['onomatopea', 'creazione di elementi lessicali che vogliono suggerire acusticamente, con l’imitazione fonetica, l’oggetto o l’azione significata.'],
+    ['paronomasia', 'accostamento di due parole di suono simile o uguale, generalmente per mettere in risalto l’opposizione dei significati (per es.: chi dice donna dice danno; amore amaro).'],
+    ['pleonasmo', 'consiste in una o più parole grammaticalmente o concettualmente non necessarie: come in a me mi piace, dove "a me" e "mi" indicano lo stesso rapporto.'],
+    ['climax', 'enumerazione di termini con gradazione di intensità maggiore (ascendente) o minore (discendente o anticlimax), ad esempio: si alzò, iniziò a camminare, camminò sempre più veloce, fino a correre come il vento.'],
+    ['ellissi', 'omissione in una proposizione di uno o più elementi che si possono sottintendere (per es. il verbo) conferendo all’enunciato più concisione ed efficacia. (ex.: a buon intenditor -[bastano]- poche parole).']
+    ];
+    let input = document.getElementById('input');
+    let soluzione = document.getElementById('soluzione');
+    let btnNuova = document.getElementsByTagName('button');
+    let btnRivela = document.getElementsByTagName('button');
+    function aCasoFra(min, max) {
+      return Math.floor(Math.random() * (max - min) + min);
+    }
+    
+    function refresh() {
+    	let index = aCasoFra(0, figureRetoriche.length - 1);
+      input.innerText = figureRetoriche[index][0];
+      console.log(index);
+      soluzione.style.backgroundColor = '#222';
+      soluzione.innerText = figureRetoriche[index][1];
+    }
+    
+    //console.log(soluzione)
+    btnNuova[0].onclick = () => refresh();
+    btnRivela[1].onclick = () => {soluzione.style.backgroundColor = 'white'};
+
+    
+    
+    //alert(figureRetoriche[aCasoFra(0, figureRetoriche.length - 1)]);
+    
+  </script>
+  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. (Deactivated) -->
+  <script>
+    //window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    //ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+  </script>
+  <!--<script src="https://www.google-analytics.com/analytics.js" async></script>-->
+</body>
+
+</html>
